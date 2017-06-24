@@ -12,7 +12,8 @@ class Budget < ActiveRecord::Base
   end
 
   def self.see_current_limit
-    current_limit = Budget.first
-    current_limit[:budget_limit]
+    # binding.pry
+    Budget.pluck(:budget_limit)
+    # binding.pry
   end
 end
