@@ -1,17 +1,22 @@
+require 'pry'
+
 class Category < ActiveRecord::Base
   has_many :activities
 
   class << self
     def set_limit(limit_category, limit_amount)
+      limit_category = limit_category.to_sym
       Category.create(limit_category => limit_amount)
     end
 
     def update_limit(limit_category, limit_amount)
+      limit_category = limit_category.to_sym
       Category.update(limit_category => limit_amount)
     end
 
     def see_limit(limit_category)
-      Category.pluck(limit_category)
+      limit_category = limit_category.to_sym
+      Category.where("#{limit_category} IS NOT NULL").pluck(limit_category)
     end
 
 
