@@ -1,0 +1,9 @@
+development:
+  adapter: "postgresql"
+  database: "budget_development"
+test:
+  adapter: "postgresql"
+  database: "budget_test"
+production:
+  adapter: "postgresql"
+  database: "budget_production"
