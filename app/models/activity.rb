@@ -10,8 +10,13 @@ class Activity < ActiveRecord::Base
       Activity.create(:amount => amount, :name => name, :category_name => category)
     end
 
-    def list_activities
+    def list_activities_with_limits
       table = Activity.joins('join categories on activities.category_name=categories.name').select('categories.name as category, sum(amount) as spent, categories.category_limit as limit').group('categories.name, categories.category_limit')
+      puts Hirb::Helpers::AutoTable.render(table)
+    end
+
+    def list_all_activities
+      table = Activity.select('name, amount, created_at as date, category_name as category')
       puts Hirb::Helpers::AutoTable.render(table)
     end
 
