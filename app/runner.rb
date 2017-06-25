@@ -46,7 +46,6 @@ else
     puts 'Please enter the category of the transaction'
     transaction_category = gets.chomp
     Activity.new_activity(transaction_amount, transaction_name, transaction_category)
-    Budget.change_budget_limit(transaction_amount)
   end
 end
   # end

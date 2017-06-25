@@ -5,8 +5,7 @@ class Category < ActiveRecord::Base
 
   class << self
     def set_limit(limit_category, limit_amount)
-      limit_category = limit_category.to_sym
-      Category.create(limit_category => limit_amount)
+      Category.create(:name => limit_category, :category_limit => limit_amount)
     end
 
     def update_limit(limit_category, limit_amount)
