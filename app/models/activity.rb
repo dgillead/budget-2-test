@@ -1,4 +1,5 @@
 require 'hirb'
+require 'pry'
 
 class Activity < ActiveRecord::Base
   belongs_to :budget
@@ -12,6 +13,12 @@ class Activity < ActiveRecord::Base
     def list_activities
       table = Activity.joins('join categories on activities.category_name=categories.name').select('categories.name as category, sum(amount) as spent, categories.category_limit as limit').group('categories.name, categories.category_limit')
       puts Hirb::Helpers::AutoTable.render(table)
+    end
+
+    def check_limit(category)
+      current_spent = Activity.where("category_name = '#{category}'").pluck('sum(amount)').first
+      current_limit = Activity.joins('join categories on activities.category_name=categories.name').where("categories.name = '#{category}'").pluck('category_limit').first
+      current_spent > current_limit
     end
   end
 end
