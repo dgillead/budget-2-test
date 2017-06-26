@@ -1,9 +1,10 @@
 class CreateActivity < ActiveRecord::Migration[5.0]
   def change
     create_table :activities do |t|
-      t.money :amount
+      t.decimal :amount
       t.string :name
-      t.date :date
+      t.timestamps :date
+      t.string :category_name
       t.belongs_to :budget
       t.belongs_to :category
     end

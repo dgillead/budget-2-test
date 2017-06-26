@@ -1,5 +1,11 @@
 # Budgeting Part 2
 
+## TODO
+* Allow user to search transactions by date.
+* Allow user to display last N transactions.
+* Figure out how to remove blank ID column from hirb display.
+* Add validations.
+
 Do you remember when we created a budgeting terminal-based program with the capability to save stuff to a CSV? We're going to continue building that app out with persisting data to a PostgreSQL database and through using real ActiveRecord.
 
 If you haven't started the challenge, that's okay! Let's start today with your pair.

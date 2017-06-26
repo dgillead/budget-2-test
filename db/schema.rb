@@ -16,22 +16,24 @@ ActiveRecord::Schema.define(version: 20170623203617) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.money   "amount",      scale: 2
-    t.string  "name"
-    t.date    "date"
-    t.integer "budget_id"
-    t.integer "category_id"
+    t.decimal  "amount"
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "category_name"
+    t.integer  "budget_id"
+    t.integer  "category_id"
     t.index ["budget_id"], name: "index_activities_on_budget_id", using: :btree
     t.index ["category_id"], name: "index_activities_on_category_id", using: :btree
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.money "budget_limit", scale: 2
+    t.decimal "budget_limit"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.money  "category_limit", scale: 2
+    t.string  "name"
+    t.decimal "category_limit"
   end
 
 end
