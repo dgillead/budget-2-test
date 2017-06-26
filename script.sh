@@ -8,6 +8,5 @@ echo 'rake db:migrate APP_ENV=test'
 rake db:migrate APP_ENV=test
 echo 'rake db:migrate APP_ENV=development'
 rake db:migrate APP_ENV=development
-echo 'rake db:seed APP_ENV=test'
-rake db:seed APP_ENV=test
-echo 'rake db:seed APP_ENV=development'
+echo 'rake db:seed'
+rake db:seed

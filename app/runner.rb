@@ -91,17 +91,20 @@ elsif continue.downcase == 'y' || Budget.check_if_budget_exists != 0
   					else
               Activity.new_activity(transaction_amount, transaction_name, transaction_category)
               puts "#{transaction_name.capitalize} has been saved under #{transaction_category} with an amount of #{transaction_amount}."
-              if Activity.check_limit(transaction_category)
-        				puts "You are over your monthly limit for #{transaction_category}!"
-        				puts 'Would you like to see your current category limits and how much you have spent? (Y/N)'
-        				see_all_limits = gets.chomp
-        				if see_all_limits.downcase == 'y'
-        					Activity.list_activities_with_limits
-        				end
-        			end
             end
   				end
-  			end
+  			else
+          Activity.new_activity(transaction_amount, transaction_name, transaction_category)
+          puts "#{transaction_name.capitalize} has been saved under #{transaction_category} with an amount of #{transaction_amount}."
+        end
+        if Activity.check_limit(transaction_category)
+          puts "You are over your monthly limit for #{transaction_category}!"
+          puts 'Would you like to see your current category limits and how much you have spent? (Y/N)'
+          see_all_limits = gets.chomp
+          if see_all_limits.downcase == 'y'
+            Activity.list_activities_with_limits
+          end
+        end
   		end
   	end
   	puts 'Would you like to continue? (Y/N)'

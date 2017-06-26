@@ -1,14 +1,16 @@
 # Budgeting Part 2
 
+Do you remember when we created a budgeting terminal-based program with the capability to save stuff to a CSV? We're going to continue building that app out with persisting data to a PostgreSQL database and through using real ActiveRecord.
+
+If you haven't started the challenge, that's okay! Let's start today with your pair.
+
 ## TODO
 * Allow user to search transactions by date.
 * Allow user to display last N transactions.
 * Figure out how to remove blank ID column from hirb display.
 * Add validations.
-
-Do you remember when we created a budgeting terminal-based program with the capability to save stuff to a CSV? We're going to continue building that app out with persisting data to a PostgreSQL database and through using real ActiveRecord.
-
-If you haven't started the challenge, that's okay! Let's start today with your pair.
+* Allow user to remove transactions.
+* Make it easier for user to exit program. 
 
 ## Backstory
 Your instructor, Jon, has a tough time with managing his money. He's been told to create a budget in Excel, but the thought of using spreadsheets makes him very unhappy. He's tasked you with creating a terminal based budgeting application so that he can keep track of his expenses.
