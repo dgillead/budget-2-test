@@ -20,6 +20,10 @@ class Activity < ActiveRecord::Base
       puts Hirb::Helpers::AutoTable.render(table)
     end
 
+    def total_spent
+      Activity.pluck('sum(amount)').first
+    end
+
     def check_limit(category)
       current_spent = Activity.where("category_name = '#{category}'").pluck('sum(amount)').first
       current_limit = Activity.joins('join categories on activities.category_name=categories.name').where("categories.name = '#{category}'").pluck('category_limit').first

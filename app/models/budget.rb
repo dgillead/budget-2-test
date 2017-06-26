@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'activity'
 
 class Budget < ActiveRecord::Base
   has_many :activities
@@ -17,7 +18,11 @@ class Budget < ActiveRecord::Base
     end
 
     def see_current_limit
-      Budget.pluck(:budget_limit)
+      Budget.pluck(:budget_limit).first
+    end
+
+    def check_if_over_limit
+      Budget.pluck(:budget_limit).first < Activity.total_spent
     end
   end
 end
